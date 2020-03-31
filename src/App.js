@@ -21,7 +21,7 @@ const App = () => {
   useEffect(() => {
 
     async function get_data() {
-      await fetch("https://envirocar.org/api/stable/tracks?bbox=7.545977,51.932676,7.701845,51.983030&limit=500")
+      await fetch("https://envirocar.org/api/stable/tracks?bbox=7.545977,51.932676,7.701845,51.983030&limit=30")
         .then(res => res.json())
         .then(
           (result) => {
@@ -39,7 +39,7 @@ const App = () => {
       console.log("Entra a tracks");
       for (let index = 0; index < tracks.length; index++) {
         const track = tracks[index];
-        let endpoint = "https://envirocar.org/api/stable/tracks/" + track['id'] + "/measurements?200";
+        let endpoint = "https://envirocar.org/api/stable/tracks/" + track['id'] + "/measurements?limit=50";
         await fetch(endpoint)
           .then(res => res.json())
           .then(
